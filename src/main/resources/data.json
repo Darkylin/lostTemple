@@ -1,0 +1,13 @@
+{
+  "isTest":true,
+  "msg":"someMessage",
+  "obj":{
+    "name":"one",
+    "age":2,
+    "id":3,
+    "array":["a","b"],
+    "obj":{
+      "a":1
+    }
+  }
+}
