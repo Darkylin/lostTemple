@@ -1,16 +1,13 @@
 hi, ${msg}
-test list:
-#foreach($i in $list)
-    list: $i
-#end
-test object list:
-#foreach($o in $objList)
-    objlist: $o.msg
-#end
+
 test if:
 #if($isTest)
-    test traverse obj:
-    #foreach($key in $obj.keySet())
-        obj $key = $obj[$key]
-    #end
+    test list:
+        #foreach($i in $list)
+        list: $i
+            test object list:
+            #foreach($o in $objList)
+            objlist: $o.msg $msg
+            #end
+        #end
 #end

@@ -12,7 +12,7 @@ import java.util.Map;
 /**
  * Created by yuhuan.wang on 2015/6/4.
  */
-public class VelocityTest {
+public class VelocityTest implements TestInterface{
     VelocityEngine ve;
     Template t;
     public VelocityTest(String template){
@@ -25,7 +25,7 @@ public class VelocityTest {
         }
         ve.setExtendedProperties(properties);
         ve.init();
-        t = ve.getTemplate(template,"utf-8");
+        t = ve.getTemplate(template+".vm","utf-8");
     }
 
     public String render(Map<String,Object> contextMap){
@@ -36,10 +36,10 @@ public class VelocityTest {
     }
 
     public static void main(String[] args) {
-        VelocityTest test= new VelocityTest("test.vm");
+        VelocityTest test= new VelocityTest("test");
 //        System.out.println(test.render(DataProvider.provide()));
         Map<String,Object> data = DataProvider.provide();
-        int  testAmount = 1;
+        int  testAmount = 10000;
         long startTime = System.currentTimeMillis();
         while(testAmount-->0){
             test.render(data);

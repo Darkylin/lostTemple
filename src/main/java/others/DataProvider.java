@@ -37,7 +37,7 @@ public class DataProvider {
     }
 
     public static Map<String, Object> provide() {
-        return provide(10, 10);
+        return provide(2, 2);
     }
 
 }

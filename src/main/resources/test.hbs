@@ -1,0 +1,12 @@
+hi, {{msg}}
+test if:
+{{#if isTest}}
+    test list:
+    {{#each list}}
+        list: {{this}}
+        test object list:
+        {{#each objList}}
+            objlist: {{this.msg}} {{../../msg}}
+        {{/each}}
+    {{/each}}
+{{/if}}
