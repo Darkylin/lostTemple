@@ -1,4 +1,4 @@
-package com.qunar.plate;
+package com.qunar.temple;
 
 import others.DataProvider;
 import others.TestInterface;

@@ -1,4 +1,4 @@
-package com.qunar.plate.classgenerator;
+package com.qunar.temple.classgenerator;
 
 import java.net.URLClassLoader;
 import java.net.URL;

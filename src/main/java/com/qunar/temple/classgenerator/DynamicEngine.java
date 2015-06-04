@@ -1,4 +1,4 @@
-package com.qunar.plate.classgenerator;
+package com.qunar.temple.classgenerator;
  
 import java.io.File;
 import java.net.URL;
