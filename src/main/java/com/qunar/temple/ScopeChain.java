@@ -18,7 +18,7 @@ public class ScopeChain {
     }
 
     public Object get(String key){
-
+        return null;
     }
 
     public String nextScope(String scopeName){
@@ -26,6 +26,6 @@ public class ScopeChain {
     }
 
     public String lastScope(){
-
+        return null;
     }
 }

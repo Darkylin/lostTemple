@@ -36,20 +36,37 @@ public class TemplateGenerator {
                     .append(packageName).append(";\n\n");
         }
         sw.append("import java.io.StringWriter;\nimport java.lang.reflect.Method;\nimport java.util.Iterator;\nimport java.util.List;\nimport java.util.Map;\n\n")
-                .append("public class ").append(className).append(" implements ").append(INTERFACE_NAME).append("{\n").append("public String render(Map<String, Object> data) {\n");
+                .append("public class ").append(className).append(" implements ").append(INTERFACE_NAME).append("{\n").append("\tpublic String render(Map<String, Object> data) {\n\t\tStringWriter sw = new StringWriter();\n");
 
-        int currChar,
+        int currCharCode,
                 lastChar = 0,
-        lineNumber = 1,
-        charNumber = 0;
-        boolean start=false;//是否开始计数
+                lineNumber = 1,
+                charNumber = 0,
+                currentLevel = 2;//当前级别，确定缩进tab,0是class，1是render方法，所以默认从2开始。
+        boolean openBraceOnce=false,//是否出现过一次大括号
+            writing=false;//是否正在直接写入文件内容
 
 
-        while ((currChar = fr.read()) != -1) {
-            sw.write(currChar);
-//            System.out.println(currChar + " " + (char) currChar);
+        while ((currCharCode = fr.read()) != -1) {
+            StringWriter shouldWrite = new StringWriter();
+            if(!writing){
+                int i = currentLevel;
+                while(i-->0){
+                    shouldWrite.append('\t');
+                }
+                shouldWrite.append("sw.write(\"");
+                writing = true;
+            }
+
+            if(currCharCode==10){//换行符
+                shouldWrite.append("\");\n");
+                writing = false;
+            }else if(currCharCode!=13){//回车符
+                shouldWrite.write(currCharCode);
+            }
+            sw.append(shouldWrite.toString());
         }
-        sw.append("}\n}");
+        sw.append("\t}\n}");
         System.out.println(sw.toString());
         TemplateInterface rtn = null;
         return rtn;
