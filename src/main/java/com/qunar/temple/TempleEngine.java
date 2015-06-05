@@ -9,7 +9,7 @@ import others.TestInterface;
  * @author: yuhuan.wang
  * @date: 6/4/15 11:51 AM
  */
-public class PlateEngine {
+public class TempleEngine {
     public TestInterface compile(String hbsFileName){
         TestInterface t = null;
 
@@ -17,6 +17,6 @@ public class PlateEngine {
     }
 
     public static void main(String[] args) {
-        System.out.println(new PlateEngine().compile("test").render(DataProvider.provide()));
+        System.out.println(new TempleEngine().compile("test").render(DataProvider.provide()));
     }
 }
