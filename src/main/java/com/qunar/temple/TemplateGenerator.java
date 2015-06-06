@@ -54,6 +54,7 @@ public class TemplateGenerator {
                 directiveMode = false,
                 firstEnterDirective = false,//刚刚进入指令状态，用于确定指令类型
                 endDirectiveMode = false,//是否正在准备结束指令读取
+                elseifMode = false,//当前是否处于elseif模式，用于确定指令
                 directiveLine = false;//当前行是否为指令行
         DirectiveType directiveType = DirectiveType.NORMAL;//指令类型
         DirectiveLevel directiveLevel = DirectiveLevel.NORMAL;//指令级别{{}}为normal，{{{}}}为level1
@@ -86,23 +87,25 @@ public class TemplateGenerator {
                     } else {
                         if (i == 33) {//'!'
                             directiveType = DirectiveType.COMMENT;
-                            continue;
                         } else if (i == 35) {//'#'
                             directiveType = DirectiveType.BLOCK;
-                            continue;
                         } else if (i == 62) {//'>'
                             directiveType = DirectiveType.PARTIAL;
-                            continue;
                         }else{
                             directive.write(i);
                         }
                         firstEnterDirective = false;
+                        continue;
                     }
                 }
 
                 if (endDirectiveMode) {
                     if (i != 125) {//结束指令读取
-                        sw.append(data.getData(directive.toString()));
+                        String txt = directive.toString();
+                        if(txt.startsWith("elseif ")){
+                            elseifMode = true;
+                        }
+                        sw.append(data.getData(txt));
                         endDirectiveMode = false;
                         directiveMode = false;
                     }
@@ -153,7 +156,8 @@ public class TemplateGenerator {
 
 
     public static void main(String[] args) throws Exception {
-        new TemplateGenerator().compile("hbs/test");
+//        new TemplateGenerator().compile("hbs/test");
+        new TemplateGenerator().compile("test");
     }
 }
 

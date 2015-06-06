@@ -1,0 +1,31 @@
+{
+  "name": "lost-temple",
+  "version": "0.0.1",
+  "description": "a template engine extends handlebars that can output precompile templates for javascript and java",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Darkylin/lostTemple.git"
+  },
+  "keywords": [
+    "template",
+    "precompile",
+    "java",
+    "handlebars"
+  ],
+  "author": "darkylin",
+  "license": "GNU",
+  "bugs": {
+    "url": "https://github.com/Darkylin/lostTemple/issues"
+  },
+  "homepage": "https://github.com/Darkylin/lostTemple",
+  "dependencies": {
+    "fs-extra": "^0.18.4",
+    "lodash": "^3.9.3",
+    "q": "^1.4.1",
+    "through2": "^0.6.5"
+  }
+}
