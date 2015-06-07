@@ -10,7 +10,7 @@ function compile(path, callback, options, outputType) {
 
 exports.compile = compile
 
-compile('a/b/test.hbs', function () {
+compile('a/b/escape.hbs', function () {
 }, {
     cwd: 'test/resources'
 }, 'java');

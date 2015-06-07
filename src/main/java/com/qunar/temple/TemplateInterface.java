@@ -9,5 +9,5 @@ import java.util.Map;
  * @date: 6/4/15 11:52 AM
  */
 public interface TemplateInterface {
-    public String render(Map map);
+    public String render(Map<String, Object> map);
 }
